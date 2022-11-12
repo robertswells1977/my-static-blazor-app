@@ -68,6 +68,12 @@ public class ProductData : IProductData
         return Task.FromResult(true);
     }
 
+    public Task<Product> GetProduct(int id)
+    {
+        var index = products.FindIndex(p => p.Id == id);
+        var product = products[index];
+        return Task.FromResult(product);
+    }
     public Task<IEnumerable<Product>> GetProducts()
     {
         return Task.FromResult(products.AsEnumerable());
